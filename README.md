@@ -1,6 +1,6 @@
 # Mail Automation Project (MAP)
 
-<img src="automatic-mail.avif" width="200" height="100">
+<img src="automatic-mail.avif" width="400" height="400">
 
 ### Problem
 Salahaddin skole er en kurdisk lørdagsskole i Oslo som drives av Salahaddin Senter. Jeg oppdaget at de sendte elevenes timeplan til foreldrene på e-mail som var en tidskrevende prosess hver uke.
