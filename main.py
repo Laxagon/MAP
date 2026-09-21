@@ -6,9 +6,14 @@ import smtplib
 from imaplib import IMAP4_SSL
 import email
 
+# fetch secret user and password from a file
+file = open("usr_pass.txt", 'r')
+info = file.read().split('\n')
+
 # fetch encrypted mail username and password of school's mail
-sch_user: str = os.environ.get('SCH_USER')
-sch_pass: str = os.environ.get('SCH_PASS')
+sch_user: str = info[0]
+sch_pass: str = info[1]
+file.close()
 
 # which sender we are looking for and from which date we are looking
 sender: str = "saman"
@@ -82,6 +87,7 @@ if status == 'OK':
         # closing and logging out for safe measure
         imap.close()
         imap.logout()
+        input("Trykk på Enter for å avslutte...")
         os._exit(1)
 
     for msg in tot_msgs[0].split():
@@ -96,7 +102,8 @@ if status == 'OK':
         # see if its weekly schedule for teachers or studfents
         sub_list = decoded_subject[0][0].split()
         if len(sub_list) != 3:
-            print("Det er noe galt med emnet")
+            print(f"Emnet burde se ut som eksempelet: 'Vs: elev ukeplannr.14', men ser slik ut: {subject}")
+            input("Trykk på Enter for å avslutte...")
             os._exit(1)
         student = False
         elev = sub_list[1].lower()
@@ -130,3 +137,5 @@ else:
 # closing and logging out for safe measure
 imap.close()
 imap.logout()
+
+input("Trykk på Enter for å avslutte...")
