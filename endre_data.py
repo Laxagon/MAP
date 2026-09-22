@@ -7,7 +7,7 @@ from openpyxl.utils import get_column_letter, range_boundaries
 from openpyxl.worksheet.worksheet import Worksheet
 
 # Filen ligger i mappen "mails" ved siden av dette scriptet
-FILE = str(Path(__file__).parent / "mails" / "mails.xlsx")
+FILE = "mails/mails.xlsx"
 KLASSE_KOLONNE = 1  # 0-basert plass i tabellen: mail=0, klasse=1, rolle=2
 ROLLE_KOLONNE = 2
 GYLDIGE_ROLLER = ("student", "teacher")
