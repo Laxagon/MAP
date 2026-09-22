@@ -111,6 +111,34 @@ def slett(arbeidsbok: Workbook, ark: Worksheet, rad: int) -> None:
     arbeidsbok.save(FILE)
 
 
+def sorter(arbeidsbok: Workbook, ark: Worksheet, kolonne_idx: int, synkende: bool = False) -> None:
+    """Sorterer datarradene i tabellen etter kolonne_idx (0-basert i tabellen). Tomme celler havner sist."""
+    tabell, min_kol, min_rad, maks_kol, maks_rad = hent_tabell(ark)
+
+    if not (0 <= kolonne_idx <= maks_kol - min_kol):
+        raise ValueError("Ugyldig kolonne å sortere etter.")
+
+    rader = [
+        [ark.cell(row=r, column=k).value for k in range(min_kol, maks_kol + 1)]
+        for r in range(min_rad + 1, maks_rad + 1)
+    ]
+
+    def er_tom(rad: list) -> bool:
+        v = rad[kolonne_idx]
+        return v is None or v == ""
+
+    ikke_tomme = [r for r in rader if not er_tom(r)]
+    tomme = [r for r in rader if er_tom(r)]
+    ikke_tomme.sort(key=lambda r: str(r[kolonne_idx]).lower(), reverse=synkende)
+    rader = ikke_tomme + tomme  # tomme celler alltid sist, uansett retning
+
+    for i, radverdier in enumerate(rader):
+        r = min_rad + 1 + i
+        for j, verdi in enumerate(radverdier, start=min_kol):
+            ark.cell(row=r, column=j).value = verdi
+    arbeidsbok.save(FILE)
+
+
 # ---------------------------------------------------------------------------
 # Dialog med flere skrivefelt
 # ---------------------------------------------------------------------------
@@ -225,6 +253,8 @@ class App(tk.Tk):
             str(self.ark.cell(row=min_rad, column=k).value or "")
             for k in range(min_kol, maks_kol + 1)
         ]
+        self.sorter_kolonne: int | None = None
+        self.sorter_synkende = False
 
         knapper = ttk.Frame(self, padding=(10, 10, 10, 4))
         knapper.pack(fill="x")
@@ -240,7 +270,7 @@ class App(tk.Tk):
             midt, columns=list(range(len(self.overskrifter))), show="headings", selectmode="browse"
         )
         for i, navn in enumerate(self.overskrifter):
-            self.tre.heading(i, text=navn)
+            self.tre.heading(i, text=navn, command=lambda i=i: self.sorter_klikk(i))
             self.tre.column(i, width=220, anchor="w")
 
         rull = ttk.Scrollbar(midt, orient="vertical", command=self.tre.yview)
@@ -250,7 +280,9 @@ class App(tk.Tk):
 
         self.tre.bind("<Double-1>", self.dobbeltklikk)
 
-        self.status = tk.StringVar(value="Dobbeltklikk på en celle for å endre den.")
+        self.status = tk.StringVar(
+            value="Dobbeltklikk på en celle for å endre den. Klikk en kolonneoverskrift for å sortere."
+        )
         ttk.Label(self, textvariable=self.status, padding=(10, 6)).pack(fill="x")
 
     def oppdater(self) -> None:
@@ -341,6 +373,27 @@ class App(tk.Tk):
             self.oppdater()
             self.tre.selection_set(str(rad))  # behold valgt rad
             self.status.set(f"Endret rad {rad}.")
+
+    def sorter_klikk(self, kolonne_idx: int) -> None:
+        # klikk samme overskrift igjen -> bytt retning; klikk en annen -> start stigende
+        synkende = self.sorter_kolonne == kolonne_idx and not self.sorter_synkende
+
+        ok, _ = self.kjor(sorter, kolonne_idx, synkende)
+        if ok:
+            self.sorter_kolonne = kolonne_idx
+            self.sorter_synkende = synkende
+            self._oppdater_overskrifter()
+            self.oppdater()
+            retning = "synkende" if synkende else "stigende"
+            self.status.set(f"Sortert etter «{self.overskrifter[kolonne_idx]}» ({retning}).")
+
+    def _oppdater_overskrifter(self) -> None:
+        """Setter ▲/▼ på kolonnen som er sortert."""
+        for i, navn in enumerate(self.overskrifter):
+            pil = ""
+            if i == self.sorter_kolonne:
+                pil = " ▼" if self.sorter_synkende else " ▲"
+            self.tre.heading(i, text=navn + pil, command=lambda i=i: self.sorter_klikk(i))
 
     def endre_alle_klikk(self) -> None:
         svar = Skjema(

@@ -2,8 +2,9 @@ import datetime
 from email.header import decode_header
 from email.message import EmailMessage
 import os
-import smtplib
 from imaplib import IMAP4_SSL
+import smtplib
+from openpyxl import load_workbook
 import email
 
 # fetch secret user and password from a file
@@ -16,9 +17,9 @@ sch_pass: str = info[1]
 file.close()
 
 # which sender we are looking for and from which date we are looking
-sender: str = "saman"
+sender: str = info[2]
 date: datetime.datetime = datetime.datetime.now()
-two_days_ago: datetime.datetime = date - datetime.timedelta(days=2)
+two_days_ago: datetime.datetime = date - datetime.timedelta(days=140)
 
 # what imap and smtp server we are using
 imap_server: str = 'imap.gmail.com'
@@ -45,20 +46,16 @@ Salahaddin skoleadministrasjon
     bcc_addresses = []
 
     # check if we need to retrieve from student mails or teacher mails
-    if student:
-        mail_file = open('mails/students.txt', 'r')
-    else:
-        mail_file = open('mails/teachers.txt', 'r')
+    wanted = "student" if student else "teacher"
+    ws = load_workbook("mails/mails.xlsx").active
 
     # parsing through the mails, sending to mail from corresponding classroom
-    mail_list = mail_file.read().split('\n')
-    for mail in mail_list:
-        cr = mail.split()[0]
-        ml = mail.split()[1]
-        if cr.lower() == classroom.lower():
+    for ml, cr, role in ws.iter_rows(min_row=2, values_only=True):  # min_row=2 skips header
+        if role == wanted and cr.lower() == classroom.lower():
             bcc_addresses.append(ml)
 
     # sending the mail
+    print("sending to", bcc_addresses)
     with smtplib.SMTP_SSL(smtp_server, 465) as smtp:
         smtp.login(sch_user, sch_pass)
         smtp.send_message(msg, to_addrs=bcc_addresses)
