@@ -18,5 +18,5 @@ Jeg leste meg opp på e-mail automasjon på Python og begynte å implementere de
 MAP ble en success! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer i måneden***. I dag, 14. august, 2026, utgjør dette totalt omtrent ***92 timer***.
 
 
-**Today's date:** <!-- DATE -->  
-**Weeks since January 6:** <!-- WEEKS -->
+**Today's date:** 28. September 2026  
+**Weeks since January 6:** 90 weeks
