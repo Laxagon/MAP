@@ -38,7 +38,7 @@ jobs:
 
           content = content.replace(
               "<!-- WEEKS -->",
-              weeks
+              f"{weeks}"
           )
 
           with open("README.md", "w", encoding="utf-8") as f:
