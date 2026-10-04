@@ -15,4 +15,4 @@ Jeg leste meg opp på e-mail automasjon på Python og begynte å implementere de
 3. Sørge for at MAP-scriptet skulle lagres som en .exe fil hos admin hos Salahaddin Senter slik at han bare ved et klikk kunne sende alle mailene. Han fikk også veiledning av meg over hvordan han kunne legge til, endre eller slette databasen med alle foreldrene og e-mailene.
 
 ### Resultat
-MAP ble en success! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer i måneden***. I dag, <!-- DATE_START -->03. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent ***<!-- WEEKS_START -->90<!-- WEEKS_END --> timer***.
+MAP ble en success! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer i måneden***. I dag, <!-- DATE_START -->04. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent ***<!-- WEEKS_START -->90<!-- WEEKS_END --> timer***.
