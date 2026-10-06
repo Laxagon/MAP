@@ -3,19 +3,20 @@
 <img src="automatic-mail.avif" width="400" height="400">
 
 ### Situasjon
-Salahaddin skole er en kurdisk lørdagsskole i Oslo som drives av Salahaddin Senter. Jeg oppdaget at de sendte elevenes timeplan til foreldrene på e-mail som var en tidskrevende prosess hver uke.
+
+Salahaddin skole er en kurdisk lørdagsskole i Oslo som drives av Salahaddin Senter. Jeg merket at systemet deres for utsending av timeplaner var en manuell og tidkrevende prosess, og så et stort potensial for automatisering.
 
 ### Oppgave
-Jeg kom med forslaget om å automatisere hele prossessen for dem frivillig, og de aksepterte. Dermed startet oppgaven om  å utvikle en automatisk e-mail script som også skulle være brukervennlig for skolens admin å bruke.
+
+De godtok forslaget mitt om at jeg frivillig skulle utvikle et automatisert system der de forskjellige timeplanene ble sendt til riktig mottaker. Systemet skulle være enkelt å redigere dersom elever startet, sluttet, endret e-postadresse eller byttet klasse. Med ett klikk skulle alle timeplanene bli sendt ut i løpet av ett minutt, samtidig som systemet skulle være brukervennlig for administratoren.
 
 ### Hvordan jeg løste oppgaven
-Jeg leste meg opp på e-mail automasjon på Python og begynte å implementere det jeg leste om. Det var 3 ting jeg merket var veldig viktig å passe på:
-1. Alle e-mail og brukeropplysningerer privat sensitiv informasjon, så dette skulle bli behandlet forsiktig.
-2. Skriving av tester som forsikrer at foreldrene unngår spam eller mangel av timeplan. Automasjonen skulle dobbeltsjekke at alt blir gjort riktig.
-3. Sørge for at MAP-scriptet skulle lagres som en .exe fil hos admin hos Salahaddin Senter slik at han bare ved et klikk kunne sende alle mailene. Han fikk også veiledning av meg over hvordan han kunne legge til, endre eller slette databasen med alle foreldrene og e-mailene.
+
+Jeg leste meg opp på e-postautomatisering i Python og begynte å implementere det jeg lærte. Jeg sørget også for at sensitiv informasjon og e-postadresser var beskyttet, og at MAP kunne testes og kjøres på administratorens PC.
 
 ### Resultat
-MAP ble en success! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer i måneden***. I dag, <!-- DATE_START -->06. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent ***<!-- WEEKS_START -->91<!-- WEEKS_END --> timer***.
+
+MAP ble en suksess! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart 4 timer i måneden. I dag, <!-- DATE_START -->06. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent <!-- WEEKS_START -->91<!-- WEEKS_END --> timer.
 
 ### Refleksjon
 
