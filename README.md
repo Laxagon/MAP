@@ -2,10 +2,10 @@
 
 <img src="automatic-mail.avif" width="400" height="400">
 
-### Problem
+### Situasjon
 Salahaddin skole er en kurdisk lørdagsskole i Oslo som drives av Salahaddin Senter. Jeg oppdaget at de sendte elevenes timeplan til foreldrene på e-mail som var en tidskrevende prosess hver uke.
 
-### Min oppgave
+### Oppgave
 Jeg kom med forslaget om å automatisere hele prossessen for dem frivillig, og de aksepterte. Dermed startet oppgaven om  å utvikle en automatisk e-mail script som også skulle være brukervennlig for skolens admin å bruke.
 
 ### Hvordan jeg løste oppgaven
