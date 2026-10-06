@@ -16,3 +16,10 @@ Jeg leste meg opp på e-mail automasjon på Python og begynte å implementere de
 
 ### Resultat
 MAP ble en success! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer i måneden***. I dag, <!-- DATE_START -->06. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent ***<!-- WEEKS_START -->91<!-- WEEKS_END --> timer***.
+
+### Refleksjon
+
+Da MAP var ferdig utviklet, var det noen svakheter ved løsningen, selv om den fungerte som den skulle. MAP var ikke så brukervennlig som jeg hadde håpet, og databasen var tungvint å redigere. Jeg har senere gått tilbake og gjort flere endringer som har gjort både databasen og brukervennligheten bedre, men det er fortsatt ikke perfekt.
+
+I fremtidige prosjekter har jeg derfor lært at jeg må legge mer vekt på disse delene av utviklingen. Jeg vil ta med meg erfaringene fra dette prosjektet og være mer bevisst på hva som fungerer godt og hva som kan forbedres. Dette er spesielt viktig fordi det er disse delene brukerne faktisk kommer mest i kontakt med.
+
