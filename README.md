@@ -16,7 +16,7 @@ Jeg leste meg opp på e-postautomatisering i Python og begynte å implementere d
 
 ### Resultat
 
-MAP ble en suksess! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer*** i måneden. I dag, <!-- DATE_START -->06. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent ***<!-- WEEKS_START -->91<!-- WEEKS_END --> timer***.
+MAP ble en suksess! Helt siden MAP ble utviklet i januar 2024, har Salahaddin Senter spart ***4 timer*** i måneden. I dag, <!-- DATE_START -->07. October 2026<!-- DATE_END -->, utgjør dette totalt omtrent ***<!-- WEEKS_START -->91<!-- WEEKS_END --> timer***.
 
 ### Refleksjon
 
